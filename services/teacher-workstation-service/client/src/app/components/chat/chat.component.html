@@ -1,0 +1,16 @@
+<ng-container>
+    @if(this.chats){
+        <div *ngFor="let chat of this.chats">
+            <img [src]="contacts[chat.contactId].img" alt="User Image">
+            <section>
+                @if(chat.context[chat.context.length - 1].from_you){
+                    <h3>you:</h3>
+                }@else{
+                    <h3>{{ contacts[chat.contactId].name }}:</h3>
+                }
+                <h3>{{ chat.context[chat.context.length - 1].text }}</h3>
+                <p>{{ chat.context[chat.context.length - 1].time }}</p>
+            </section>
+        </div>
+    }
+</ng-container>

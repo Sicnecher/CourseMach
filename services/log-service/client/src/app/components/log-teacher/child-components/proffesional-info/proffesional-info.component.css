@@ -1,0 +1,9 @@
+.payment{
+    max-width:30%;
+    margin-right: 10px;
+}
+
+.pay-option-controll{
+    display: flex;
+    align-items: center;
+}

@@ -1,0 +1,52 @@
+<ng-container>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <input type="string" class="form-control" id="field" formControlName='field' aria-describedby="fieldHelp" placeholder="Enter field">
+    </div>
+    <div class="mb-3">
+      <input type="string" class="form-control" id="skills" formControlName="skills" placeholder="Enter skills">
+    </div>
+    <div class="mb-3 form-check">
+      <input type="file" class="form-control" id="resume" formControlName="resume" placeholder="Upload resume">
+      <!-- <a [href]="resumeUrl" target="_blank" rel="noopener noreferrer">Download Resume</a>
+      <embed *ngIf="resumeUrl" [src]="resumeUrl" type="application/pdf" width="100%" height="600px"> -->
+    </div>
+    <div class="mb-3"> 
+      <div>
+        <input type="radio" formControlName="payment_method" value="perHour"> Per Hour
+        <input type="radio" formControlName="payment_method" value="perJob"> Per Job
+      </div>
+    </div>
+    <div *ngIf="form.get('payment_method')?.value === 'perHour' || form.get('payment_method')?.value === 'perJob'" class="mb-3">
+      <div class="mb-3 form-check">
+        <div class="mb-3 pay-option-controll">
+          <input type="number"
+          class="form-control payment" 
+          id="maximum-pay" 
+          formControlName="maximumPay"
+          placeholder="Maximum Pay"
+          min="5" 
+          max="10000000"
+          value="5"
+          >
+          <a>$</a>
+        </div>
+        <div class="mb-3 pay-option-controll">
+          <input type="number" 
+          class="form-control payment" 
+          id="minimum-pay"
+           formControlName="minimumPay"
+           placeholder="Minimum Pay"
+           min="5" 
+          max="10000"
+          >
+          <a>$</a>
+        </div>
+        <input #notSet type="checkbox" value="notSet" (click)="isDisabled(notSet.checked)"> not set
+      </div>
+    </div>
+    <div>
+      <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Done</button>
+    </div>
+  </form>
+</ng-container>

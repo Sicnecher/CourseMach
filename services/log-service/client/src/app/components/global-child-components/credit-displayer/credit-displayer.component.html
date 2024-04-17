@@ -1,0 +1,13 @@
+<ng-container>
+    <div *ngFor="let card of cardList">
+        <div>
+            <section>
+                <h3>{{ card.number }}</h3>
+            </section>
+            <section>
+                <p>{{ card.exDate }}</p>
+            </section>
+        </div>
+        <img [src]="cardImgUrl(card.company)" />
+    </div>
+</ng-container>

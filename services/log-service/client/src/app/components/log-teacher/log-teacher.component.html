@@ -1,0 +1,50 @@
+<div class="formbold-main-wrapper">
+    <!-- Author: FormBold Team -->
+    <!-- Learn More: https://formbold.com -->
+    <div class="formbold-form-wrapper">
+        <form (click)="onSubmit()">
+        <div class="formbold-steps">
+            <ul>
+                <li class="formbold-step-menu1 active">
+                    <span>1</span>
+                    Skills
+                </li>
+                <li class="formbold-step-menu2" [class.active]="steps[0]">
+                    <span>2</span>
+                    Finance
+                </li>
+                <li class="formbold-step-menu3" [class.active]="steps[1]">
+                    <span>3</span>
+                    Summary
+                </li>
+            </ul>
+        </div>
+@if(!steps[0]){
+    <app-proffesional-info (complete)="handleCompleted($event)"></app-proffesional-info>
+}@else if(!steps[1]){
+    <app-finance-info (complete)="handleCompleted($event)" (previous)="goBack(0)"></app-finance-info>
+}@else{
+    <h1>Is everything correct?</h1>
+    <div (click)="goBack(0)">
+        <h2>Proffesional info: </h2>
+        <h4>{{newTeach?.proInfo?.field}}</h4>
+        <h3>Skills</h3>
+        <!-- <p *ngFor="let skill in newTeach?.proInfo?.skills">
+            {{skill}}
+        </p> -->
+        <section><h4>Payment Method: </h4><p>{{newTeach?.proInfo?.payment_method}}</p></section>
+        <section><h4>Field: </h4><p>{{newTeach?.proInfo?.field}}</p></section>
+    </div>
+    <div (click)="goBack(1)">
+        <h1>dssdsdf</h1>
+        <p>fdcccdsdf</p>
+    </div>
+    <!-- Add home button with angular urlPathHandler -->
+    <p>Click for main page</p>
+    <div>
+        <button type="submit" class="btn btn-primary">Done</button>
+      </div>
+}
+        </form>
+    </div>
+</div>
