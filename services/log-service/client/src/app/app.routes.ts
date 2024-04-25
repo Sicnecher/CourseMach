@@ -10,8 +10,14 @@ import { UnauthorizedAccessComponent } from './components/errors/unauthorized-ac
 import { errorAuthGuard } from './services/auth/guard/errors/error.auth.guard';
 import { NotFoundComponent } from './components/errors/not-found/not-found.component';
 import { InternalErrorComponent } from './components/errors/internal-error/internal-error.component';
+import { AppComponent } from './app.component';
 
 export const routes: Routes = [
+    {
+        path: '',
+        canActivate: [mainAuthGuard],
+        component: AppComponent
+    },
     {
         path: 'error',
         canActivate: [errorAuthGuard],
@@ -31,7 +37,7 @@ export const routes: Routes = [
         ]
     },
     {
-        path: 'sign-in',
+        path: 'sign',
         component: LogUserComponent,
         canActivate: [mainAuthGuard]
     },

@@ -15,8 +15,7 @@ export const mainAuthGuard: CanActivateFn = async (
       return res 
     }else{
       const res = await authService.loggedOrNot()
-      if(res) router.navigateByUrl('/sign-in')
-      console.log(res)
+      if(res) router.navigateByUrl('/')
       return !res
     }
 };

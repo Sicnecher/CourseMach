@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { LogUserService } from '../../services/http/log-service/log-user.service';
 import { Subscription } from 'rxjs';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 
 @Component({
@@ -13,15 +13,23 @@ import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
   templateUrl: './log-user.component.html',
   styleUrl: './log-user.component.css'
 })
-export class LogUserComponent{
+export class LogUserComponent implements OnInit{
   formState: string = 'container';
   subscription?:Subscription
 
   constructor (
     private logUserService:LogUserService,
     private router:Router,
-    private elementRef: ElementRef
+    private elementRef: ElementRef,
+    private route:ActivatedRoute
   ) { }
+
+  ngOnInit(): void {
+    this.route.queryParams.subscribe(param => {
+      const p = param['param']
+      p === 'in' ? this.formState = 'container' : this.formState = 'container active'
+    })
+  }
 
   onEmailChange(event: KeyboardEvent) {
     if(event.target){

@@ -1,8 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ProffesionalInfoComponent } from './child-components/proffesional-info/proffesional-info.component';
 import { FinanceInfoComponent } from './child-components/finance-info/finance-info.component';
-import { LogTeacherDto, LogTeacherFinanceDto, LogTeacherProffesionalDto } from '../../models/dto/log-teacher.dto';
-import { FormGroup } from '@angular/forms';
+import { LogTeacherDto, LogTeacherFinanceDto } from '../../models/dto/log-teacher.dto';
 import { CommonModule } from '@angular/common';
 import { LogTeacherService } from '../../services/http/log-service/log-teacher.service';
 import { LogTeacherValidationService } from '../../services/validation/log-teacher-validation/log-teacher.validation.service';
